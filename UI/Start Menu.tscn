@@ -1,0 +1,100 @@
+[gd_scene load_steps=8 format=3 uid="uid://cr6idxr31fty5"]
+
+[ext_resource type="Script" path="res://UI/Start Menu.gd" id="1_mpwac"]
+[ext_resource type="AudioStream" uid="uid://uu0bfymmbxce" path="res://Audio/Button Click.mp3" id="2_3jpo7"]
+[ext_resource type="Texture2D" uid="uid://bh6upfbudm6m8" path="res://UI/Start Menu Background.jpg" id="3_o5165"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3hc4v"]
+bg_color = Color(0.764706, 0.564706, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d1hkh"]
+content_margin_top = 12.0
+content_margin_bottom = 20.0
+bg_color = Color(0.560784, 0.560784, 0.560784, 1)
+border_width_bottom = 8
+border_color = Color(0.347817, 0.347817, 0.347817, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0.0196078, 0.0196078, 0.0196078, 0.6)
+shadow_size = 5
+shadow_offset = Vector2(-3, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_314pp"]
+bg_color = Color(0.764706, 0.564706, 0, 1)
+
+[sub_resource type="Theme" id="Theme_thrd5"]
+Button/styles/hover = SubResource("StyleBoxFlat_3hc4v")
+Button/styles/normal = SubResource("StyleBoxFlat_d1hkh")
+Button/styles/pressed = SubResource("StyleBoxFlat_314pp")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_thrd5")
+script = ExtResource("1_mpwac")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Node2D"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_o5165")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -68.0
+offset_right = 192.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Play"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.494
+offset_left = 448.0
+offset_top = 128.0
+offset_right = -448.0
+offset_bottom = -64.112
+theme_override_font_sizes/font_size = 35
+text = "Pixelgame"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3jpo7")
+pitch_scale = 5.0
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

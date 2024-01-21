@@ -1,0 +1,264 @@
+[gd_scene load_steps=13 format=3 uid="uid://dhn2dc2wpiqs2"]
+
+[ext_resource type="Texture2D" uid="uid://b3o41jck30feh" path="res://UI/The Farm Store.png" id="1_eo1qf"]
+[ext_resource type="Script" path="res://UI/TFS Button Functions.gd" id="1_f85em"]
+[ext_resource type="Texture2D" uid="uid://bqeucsfrfg6rq" path="res://Items/Upgrades/Dash.png" id="2_ldncu"]
+[ext_resource type="AudioStream" uid="uid://uu0bfymmbxce" path="res://Audio/Button Click.mp3" id="4_d8npk"]
+[ext_resource type="Texture2D" uid="uid://cp86s21krkn2w" path="res://Items/Upgrades/Fireball.png" id="4_t6uto"]
+[ext_resource type="Texture2D" uid="uid://cpk4xqdbuo5bv" path="res://Items/Upgrades/Shield.png" id="5_5k553"]
+[ext_resource type="Texture2D" uid="uid://rryhfipkhl7p" path="res://Items/Currencies/Coin.png" id="5_twhag"]
+[ext_resource type="Texture2D" uid="uid://dpfuqi05dphcv" path="res://Items/Currencies/Token.png" id="6_mu45t"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8kskq"]
+bg_color = Color(0.392157, 0.392157, 0.392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uowte"]
+bg_color = Color(0.392157, 0.392157, 0.392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hlvcv"]
+bg_color = Color(0.392157, 0.392157, 0.392157, 1)
+
+[sub_resource type="Theme" id="Theme_lw883"]
+Button/styles/focus = SubResource("StyleBoxFlat_8kskq")
+Button/styles/hover = SubResource("StyleBoxFlat_uowte")
+Button/styles/normal = SubResource("StyleBoxFlat_hlvcv")
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_f85em")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("1_eo1qf")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = -14.0
+offset_top = -38.0
+offset_right = 69.0
+offset_bottom = 2.0
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 25
+text = "Store"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Dash" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-31, -22)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_ldncu")
+
+[node name="Fireball" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-31, 2)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("4_t6uto")
+
+[node name="Shield" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-31, 26)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_5k553")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_lw883")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = -29.0
+offset_right = 34.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 10
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = -5.0
+offset_right = 34.0
+offset_bottom = 9.0
+theme_override_font_sizes/font_size = 10
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 14.0
+offset_top = 19.0
+offset_right = 34.0
+offset_bottom = 33.0
+theme_override_font_sizes/font_size = 10
+text = "Buy"
+metadata/_edit_use_anchors_ = true
+
+[node name="Info" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -15.0
+offset_top = -17.0
+offset_right = -8.0
+offset_bottom = -10.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 25
+text = "Dash"
+
+[node name="Info2" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -15.0
+offset_top = 7.0
+offset_right = -8.0
+offset_bottom = 14.0
+scale = Vector2(0.205, 0.205)
+theme_override_font_sizes/font_size = 25
+text = "Fireball"
+
+[node name="Info3" type="Button" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -15.0
+offset_top = 31.0
+offset_right = -8.0
+offset_bottom = 38.0
+scale = Vector2(0.205, 0.205)
+theme_override_font_sizes/font_size = 25
+text = "Shield"
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_d8npk")
+pitch_scale = 5.0
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 35.0
+offset_top = -32.0
+offset_right = 74.0
+offset_bottom = -6.0
+scale = Vector2(0.3, 0.3)
+text = "Cost:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 35.0
+offset_top = -8.0
+offset_right = 74.0
+offset_bottom = 18.0
+scale = Vector2(0.3, 0.3)
+text = "Cost:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 35.0
+offset_top = 16.0
+offset_right = 74.0
+offset_bottom = 42.0
+scale = Vector2(0.3, 0.3)
+text = "Cost:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Coin" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(37, -23)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("5_twhag")
+
+[node name="Coin2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(37, 0.999998)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("5_twhag")
+
+[node name="Coin3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(37, 25)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("5_twhag")
+
+[node name="Token" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(37, -18)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("6_mu45t")
+
+[node name="Token2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(37, 6)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("6_mu45t")
+
+[node name="Token3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(37, 30)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("6_mu45t")
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 40.0
+offset_top = -26.0
+offset_right = 75.0
+scale = Vector2(0.2, 0.2)
+text = "100"
+vertical_alignment = 2
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 40.0
+offset_top = -21.0
+offset_right = 75.0
+offset_bottom = 5.0
+scale = Vector2(0.2, 0.2)
+text = "30"
+vertical_alignment = 2
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 40.0
+offset_top = -2.0
+offset_right = 75.0
+offset_bottom = 24.0
+scale = Vector2(0.2, 0.2)
+text = "150"
+vertical_alignment = 2
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 3.0
+offset_right = 75.0
+offset_bottom = 29.0
+scale = Vector2(0.2, 0.2)
+text = "50"
+vertical_alignment = 2
+
+[node name="Label9" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 22.0
+offset_right = 75.0
+offset_bottom = 48.0
+scale = Vector2(0.2, 0.2)
+text = "200"
+vertical_alignment = 2
+
+[node name="Label10" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 27.0
+offset_right = 75.0
+offset_bottom = 53.0
+scale = Vector2(0.2, 0.2)
+text = "80"
+vertical_alignment = 2
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/Button3" to="." method="_on_button_3_pressed"]

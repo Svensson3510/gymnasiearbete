@@ -1,0 +1,148 @@
+[gd_scene load_steps=25 format=3 uid="uid://27u1v64dkdfe"]
+
+[ext_resource type="Script" path="res://Characters/Player/Player.gd" id="1_fsx2q"]
+[ext_resource type="Texture2D" uid="uid://ctjavirnwgbqq" path="res://Characters/Player/Left/Player Moving Left 2.png" id="2_3ry8f"]
+[ext_resource type="Texture2D" uid="uid://ctamuvexiy1it" path="res://Characters/Player/Right/Player Moving Right 1.png" id="2_di004"]
+[ext_resource type="Texture2D" uid="uid://dvpwonlhf0lhg" path="res://Characters/Player/Left/Player Left.png" id="2_egvhc"]
+[ext_resource type="Texture2D" uid="uid://c2tcutme4dc3y" path="res://Characters/Player/Right/Player Right.png" id="2_f8yca"]
+[ext_resource type="Texture2D" uid="uid://psg7g45fk88b" path="res://Characters/Player/Player.png" id="2_hreej"]
+[ext_resource type="Texture2D" uid="uid://b2b4olt2ldbbl" path="res://Characters/Player/Backward/Player Moving Backward 1.png" id="2_nrhf8"]
+[ext_resource type="Texture2D" uid="uid://ck6fafn5mo0bh" path="res://Characters/Player/Forward/Player Moving Forward 2.png" id="2_o1tpy"]
+[ext_resource type="Texture2D" uid="uid://covsp8gpgfv5h" path="res://Characters/Player/Backward/Player Backward.png" id="2_xitwe"]
+[ext_resource type="Texture2D" uid="uid://b2xf25v1ww2ny" path="res://Characters/Player/Forward/Player Moving Forward 1.png" id="3_ujuhj"]
+[ext_resource type="Texture2D" uid="uid://bw524a6wjpa7v" path="res://Characters/Player/Idle/Player Idle 1.png" id="5_ebe8j"]
+[ext_resource type="Script" path="res://Characters/Player/Player Animation.gd" id="5_lciey"]
+[ext_resource type="Texture2D" uid="uid://n325u0ieck8v" path="res://Characters/Player/Idle/Player Idle 2.png" id="6_m6q62"]
+[ext_resource type="Texture2D" uid="uid://bixp7oq58elge" path="res://Characters/Player/Idle/Player Idle 3.png" id="7_2dryn"]
+[ext_resource type="Texture2D" uid="uid://byn2riv820sha" path="res://Characters/Player/Backward/Player Moving Backward 2.png" id="8_bjheo"]
+[ext_resource type="Texture2D" uid="uid://nb4uowbro0n5" path="res://Characters/Player/Left/Player Moving Left 1.png" id="10_8jpnv"]
+[ext_resource type="Texture2D" uid="uid://cpb31mtudco3s" path="res://Characters/Player/Right/Player Moving Right 2.png" id="14_8n43x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fnx3y"]
+size = Vector2(64.2172, 128.435)
+
+[sub_resource type="Animation" id="Animation_t8o22"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_hreej"), ExtResource("5_ebe8j"), ExtResource("6_m6q62"), ExtResource("7_2dryn")]
+}
+
+[sub_resource type="Animation" id="Animation_d2npm"]
+resource_name = "Moving_Backward"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_nrhf8"), ExtResource("2_xitwe"), ExtResource("8_bjheo"), ExtResource("2_xitwe")]
+}
+
+[sub_resource type="Animation" id="Animation_b6k60"]
+resource_name = "Moving_Forward"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_ujuhj"), ExtResource("2_hreej"), ExtResource("2_o1tpy"), ExtResource("2_hreej")]
+}
+
+[sub_resource type="Animation" id="Animation_trffr"]
+resource_name = "Moving_Left"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("10_8jpnv"), ExtResource("2_egvhc"), ExtResource("2_3ry8f"), ExtResource("2_egvhc")]
+}
+
+[sub_resource type="Animation" id="Animation_agowp"]
+resource_name = "Moving_Right"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_di004"), ExtResource("2_f8yca"), ExtResource("14_8n43x"), ExtResource("2_f8yca")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sn057"]
+_data = {
+"Idle": SubResource("Animation_t8o22"),
+"Moving_Backward": SubResource("Animation_d2npm"),
+"Moving_Forward": SubResource("Animation_b6k60"),
+"Moving_Left": SubResource("Animation_trffr"),
+"Moving_Right": SubResource("Animation_agowp")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(-9.53674e-07, -5.42101e-20)
+scale = Vector2(0.498308, 0.498308)
+script = ExtResource("1_fsx2q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2.0068, 7.86781e-06)
+scale = Vector2(5.89474, 5.89474)
+texture = ExtResource("2_hreej")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.56913e-07, 32.1088)
+shape = SubResource("RectangleShape2D_fnx3y")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 5760
+limit_bottom = 3200
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 3.0
+libraries = {
+"": SubResource("AnimationLibrary_sn057")
+}
+script = ExtResource("5_lciey")
