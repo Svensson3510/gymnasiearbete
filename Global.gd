@@ -8,8 +8,8 @@ var Gold_Eggs_Integer: int
 var Enchanted_Eggs = 0
 var Enchanted_Eggs_Integer: int
 
-var Coins = 100000
-var Tokens = 100000
+var Coins = 0
+var Tokens = 0
 
 var dash = false
 var fireball = false
