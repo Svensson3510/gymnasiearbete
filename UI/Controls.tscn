@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhxxp655pkdna"]
+
+[ext_resource type="Script" path="res://UI/ControlsBackButton.gd" id="1_os1h0"]
+[ext_resource type="AudioStream" uid="uid://uu0bfymmbxce" path="res://Audio/Button Click.mp3" id="2_lwtko"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_os1h0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 384.0
+text = "Idle mode
+
+Move up: Arrow key up
+Move down: Arrow key down
+Move left: Arrow key left
+Move right: Arrow key right
+Zoom in/out: Scroll up/down
+Speed boost: Ctrl + move key
+Open store: F
+Close store: G
+Start menu: Escape
+
+
+"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 64.0
+offset_right = 640.0
+offset_bottom = 384.0
+text = "Fighting mode
+
+Move left: Arrow key left
+Move right: Arrow key right
+Jump: Z
+Attack: X
+
+
+
+"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 384.0
+offset_right = 128.0
+offset_bottom = 416.0
+text = "Back"
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lwtko")
+pitch_scale = 5.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

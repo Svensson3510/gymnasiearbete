@@ -118,13 +118,14 @@ _data = {
 [node name="CharacterBody2D" type="CharacterBody2D"]
 position = Vector2(-9.53674e-07, -5.42101e-20)
 scale = Vector2(0.498308, 0.498308)
+collision_layer = 2
 script = ExtResource("1_fsx2q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(2.0068, 7.86781e-06)
 scale = Vector2(5.89474, 5.89474)
-texture = ExtResource("2_hreej")
+texture = ExtResource("2_f8yca")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9.56913e-07, 32.1088)

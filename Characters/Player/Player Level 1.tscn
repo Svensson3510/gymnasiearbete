@@ -1,0 +1,174 @@
+[gd_scene load_steps=18 format=3 uid="uid://ce02ytwof42nr"]
+
+[ext_resource type="Script" path="res://Characters/Player/Player Level 1.gd" id="1_ufm0v"]
+[ext_resource type="Texture2D" uid="uid://c2tcutme4dc3y" path="res://Characters/Player/Right/Player Right.png" id="2_lxeod"]
+[ext_resource type="Texture2D" uid="uid://ddh8062hqoksi" path="res://Characters/Player/Player Moving Right 1 Level 1.png" id="3_1w6su"]
+[ext_resource type="Texture2D" uid="uid://bps83uyus3hdw" path="res://Characters/Player/Player Right Level 1.png" id="4_8oqkr"]
+[ext_resource type="Texture2D" uid="uid://bbjakdnmoawyi" path="res://Characters/Player/Player Moving Right 2 Level 1.png" id="5_3fguj"]
+[ext_resource type="Script" path="res://Characters/Player/Player Animation Level 1.gd" id="6_bxfio"]
+[ext_resource type="Texture2D" uid="uid://d3llyhqxcx3op" path="res://Characters/Player/Player Stab 2.png" id="7_qflpm"]
+[ext_resource type="AudioStream" uid="uid://dm3dbo8v1q5ko" path="res://Audio/Stab Swoosh.mp3" id="9_6db1r"]
+[ext_resource type="AudioStream" uid="uid://cadtgoc0dbdh4" path="res://Audio/StabImpact.mp3" id="9_pbih3"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hsed3"]
+radius = 5.0
+
+[sub_resource type="Animation" id="Animation_njuje"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_8oqkr")]
+}
+
+[sub_resource type="Animation" id="Animation_h00hq"]
+resource_name = "Moving"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_1w6su"), ExtResource("4_8oqkr"), ExtResource("5_3fguj"), ExtResource("4_8oqkr")]
+}
+
+[sub_resource type="Animation" id="Animation_4kf88"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_lxeod")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6vb0w"]
+resource_name = "Stab"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_qflpm")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_allxb"]
+_data = {
+"Idle": SubResource("Animation_njuje"),
+"Moving": SubResource("Animation_h00hq"),
+"RESET": SubResource("Animation_4kf88"),
+"Stab": SubResource("Animation_6vb0w")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4v4o"]
+size = Vector2(31, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htn4q"]
+size = Vector2(25, 31)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_mask = 147
+script = ExtResource("1_ufm0v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_lxeod")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_hsed3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 25)
+zoom = Vector2(3, 3)
+position_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 3.0
+libraries = {
+"": SubResource("AnimationLibrary_allxb")
+}
+script = ExtResource("6_bxfio")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-10.5, 0.5)
+shape = SubResource("RectangleShape2D_c4v4o")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_htn4q")
+
+[node name="StabSwoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_6db1r")
+volume_db = -10.0
+
+[node name="StabImpact" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_pbih3")
+volume_db = -10.0
+pitch_scale = 4.0
+max_polyphony = 10
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -78.0
+offset_right = 65.0
+offset_bottom = -52.0
+grow_vertical = 0
+scale = Vector2(3, 3)
+text = "100 HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_exited" from="Hurtbox" to="." method="_on_hurtbox_body_exited"]
